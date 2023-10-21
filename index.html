@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--stylesheets-->
+    <link rel="stylesheet" href="style.css">
+    <!--Scriptsheets-->
+    <script src="script.js"></script>
+    <script src="data.js"></script>
+    <!--Bootstrap files-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+
+
+<body onload="render()">
+    <!-- As a heading -->
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Bibelquiz</span>
+    </div>
+  </nav>
+  <!-- Frage & Antwort -->
+  <div class="content">
+    <div class="card quiz-card">
+        <img src="./img/quizimg.jpg" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title" id="questionText">Question</h5>
+
+          <div class="card mb-2" onclick="answer('answer_1')">
+            <div class="card-body card-answer-choice" id="answer_1">
+                Answer 1
+            </div>
+          </div>
+
+          <div class="card mb-2" onclick="answer('answer_2')">
+            <div class="card-body card-answer-choice" id="answer_2">
+                Answer 2
+            </div>
+          </div>
+
+          <div class="card mb-2" onclick="answer('answer_3')">
+            <div class="card-body card-answer-choice" id="answer_3">
+                Answer 3
+            </div>
+          </div>
+
+          <div class="card mb-2" onclick="answer('answer_4')">
+            <div class="card-body card-answer-choice" id="answer_4">
+                Answer 4
+            </div>
+          </div>
+          <div class="question-footer">
+          <span>Frage <b id="activeQuestion">1</b> von <b id="sumQuestion">5</b></span>
+          <button type="button" class="btn btn-success" disabled id="next-button" onclick="nextQuestion()">Nächste Frage</button>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>
