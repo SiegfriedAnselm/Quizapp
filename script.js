@@ -1,19 +1,26 @@
 let currentQuestion = 0;
+let rightQuestions = 0;
 
 function render() {
     document.getElementById('sumQuestion').innerHTML = Schöpfung.length;
+    document.getElementById('sumQuestion2').innerHTML = Schöpfung.length;
     showQuestion()
 }
 
 function showQuestion() {
+    if(currentQuestion >= Schöpfung.length) {
+        document.getElementById('card').classList.add('d-none');
+        document.getElementById('finish-card').classList.remove('d-none');
+        document.getElementById('right-questions').innerHTML = rightQuestions;
+    } else {
     let question = Schöpfung[currentQuestion];
-
     document.getElementById('questionText').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
     document.getElementById('answer_2').innerHTML = question['answer_2'];
     document.getElementById('answer_3').innerHTML = question['answer_3'];
     document.getElementById('answer_4').innerHTML = question['answer_4'];
     document.getElementById('activeQuestion').innerHTML = currentQuestion+1;
+    }
 }
 
 function answer(selection) {
@@ -23,6 +30,7 @@ function answer(selection) {
 
     if(selectedQuestionNumber == question['correct_answer']){
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        rightQuestions++;
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');

@@ -25,8 +25,9 @@
   <!-- Frage & Antwort -->
   <div class="content">
     <div class="card quiz-card">
+      <!--Questions-Screen-->
         <img src="./img/quizimg.jpg" class="card-img-top">
-        <div class="card-body">
+        <div class="card-body" id="card">
           <h5 class="card-title" id="questionText">Question</h5>
 
           <div class="card mb-2" onclick="answer('answer_1')">
@@ -56,6 +57,16 @@
           <span>Frage <b id="activeQuestion">1</b> von <b id="sumQuestion">5</b></span>
           <button type="button" class="btn btn-success" disabled id="next-button" onclick="nextQuestion()">Nächste Frage</button>
           </div>
+        </div>
+
+        <!-- Finish-Screen-->
+        <div class="card-body card-body-finish d-none" id="finish-card">
+          <div class="jf4 h3">Quiz beendet!</div>
+          <img class="width-100 trophy" src="./img/tropy.png">
+          <div class="jf4">
+          <p class="text-center">Du hast <b id="right-questions">x</b> von <b id="sumQuestion2">5</b> Fragen richtig beantwortet!</p>
+          </div>
+          <button type="button" class="btn btn-success">Nochmal spielen!</button>
         </div>
       </div>
   </div>

@@ -37,3 +37,32 @@
 .card-img-top {
     object-fit: cover;
 }
+
+.d-none {
+    display: none;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.card-body-finish {
+    padding: 0!important;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.trophy {
+    height: 250px;
+    margin-right: 0;
+    width: 125px;
+    float: right;
+    padding: 16px 0;
+}
+
+.jf4 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
