@@ -25,8 +25,14 @@
   <!-- Frage & Antwort -->
   <div class="content">
     <div class="card quiz-card">
-      <!--Questions-Screen-->
         <img src="./img/quizimg.jpg" class="card-img-top">
+
+      <!--Progress bar-->
+    <div class="progress">
+      <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 20%;">20%</div>
+    </div>
+
+      <!--Questions-Screen-->
         <div class="card-body" id="card">
           <h5 class="card-title" id="questionText">Question</h5>
 
@@ -61,12 +67,14 @@
 
         <!-- Finish-Screen-->
         <div class="card-body card-body-finish d-none" id="finish-card">
-          <div class="jf4 h3">Quiz beendet!</div>
+          <div class="screen-end">
+            <div class="jf4">
+              <h3 class="h3">Quiz beendet!</h3>
+              <p class="text-center">Du hast <b id="right-questions">x</b> von <b id="sumQuestion2">5</b> Fragen richtig beantwortet!</p>
+              <button type="button" class="btn btn-success revenge">Nochmal spielen!</button>
+              </div>
           <img class="width-100 trophy" src="./img/tropy.png">
-          <div class="jf4">
-          <p class="text-center">Du hast <b id="right-questions">x</b> von <b id="sumQuestion2">5</b> Fragen richtig beantwortet!</p>
-          </div>
-          <button type="button" class="btn btn-success">Nochmal spielen!</button>
+        </div>
         </div>
       </div>
   </div>
