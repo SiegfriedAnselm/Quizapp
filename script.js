@@ -12,23 +12,10 @@ function render() {
 
 function showQuestion() {
     if(currentQuestion >= Schöpfung.length) {
-        document.getElementById('card').classList.add('d-none');
-        document.getElementById('finish-card').classList.remove('d-none');
-        document.getElementById('right-questions').innerHTML = rightQuestions;
-        AUDIO_DONE.play();
+        endscreen();
     } else {
-
-    let percent = (currentQuestion + 1) / Schöpfung.length;
-    percent = Math.round(percent * 100);
-    document.getElementById('progress-bar').innerHTML = `${percent} %`;
-    document.getElementById('progress-bar').style = `width: ${percent}%`;
-    let question = Schöpfung[currentQuestion];
-    document.getElementById('questionText').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
-    document.getElementById('activeQuestion').innerHTML = currentQuestion+1;
+        progressbar();
+        questionCard();
     }
 }
 
@@ -38,13 +25,9 @@ function answer(selection) {
     let idOfRightAnswer = `answer_${question['correct_answer']}`
 
     if(selectedQuestionNumber == question['correct_answer']){
-        document.getElementById(selection).parentNode.classList.add('bg-success');
-        rightQuestions++;
-        AUDIO_SUCCESS.play();
+        answeredRight(selection);
     } else {
-        document.getElementById(selection).parentNode.classList.add('bg-danger');
-        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
-        ADUIO_FAIL.play();
+        answeredWrong(idOfRightAnswer, selection);
     }
     document.getElementById('next-button').disabled = false;
     disableAnswers();
@@ -77,6 +60,41 @@ function retry() {
     render();
 }
 
+function endscreen() {
+    document.getElementById('card').classList.add('d-none');
+    document.getElementById('finish-card').classList.remove('d-none');
+    document.getElementById('right-questions').innerHTML = rightQuestions;
+    AUDIO_DONE.play();
+}
+
+function progressbar() {
+    let percent = (currentQuestion + 1) / Schöpfung.length;
+    percent = Math.round(percent * 100);
+    document.getElementById('progress-bar').innerHTML = `${percent} %`;
+    document.getElementById('progress-bar').style = `width: ${percent}%`;
+}
+
+function questionCard() {
+    let question = Schöpfung[currentQuestion];
+    document.getElementById('questionText').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+    document.getElementById('activeQuestion').innerHTML = currentQuestion+1;
+}
+
+function answeredRight(selection) {
+    document.getElementById(selection).parentNode.classList.add('bg-success');
+    rightQuestions++;
+    AUDIO_SUCCESS.play();
+}
+
+function answeredWrong(idOfRightAnswer, selection) {
+    document.getElementById(selection).parentNode.classList.add('bg-danger');
+    document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+    ADUIO_FAIL.play();
+}
 
 function disableAnswers() {
     for (let i = 1; i < 5; i++) {
