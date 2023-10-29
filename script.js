@@ -1,5 +1,8 @@
 let currentQuestion = 0;
 let rightQuestions = 0;
+let AUDIO_SUCCESS = new Audio('./sounds/right.mp3');
+let ADUIO_FAIL = new Audio('./sounds/wrong.mp3');
+let AUDIO_DONE = new Audio('./sounds/done.mp3');
 
 function render() {
     document.getElementById('sumQuestion').innerHTML = Schöpfung.length;
@@ -12,6 +15,7 @@ function showQuestion() {
         document.getElementById('card').classList.add('d-none');
         document.getElementById('finish-card').classList.remove('d-none');
         document.getElementById('right-questions').innerHTML = rightQuestions;
+        AUDIO_DONE.play();
     } else {
 
     let percent = (currentQuestion + 1) / Schöpfung.length;
@@ -36,9 +40,11 @@ function answer(selection) {
     if(selectedQuestionNumber == question['correct_answer']){
         document.getElementById(selection).parentNode.classList.add('bg-success');
         rightQuestions++;
+        AUDIO_SUCCESS.play();
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        ADUIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
     disableAnswers();
