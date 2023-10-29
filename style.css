@@ -51,6 +51,15 @@ p {
     display: none;
 }
 
+.disable-answer {
+    pointer-events: none;
+}
+
+.disable-hover:hover {
+    cursor: not-allowed;
+    background-color: unset;
+  }
+
 .width-100 {
     width: 100%;
 }

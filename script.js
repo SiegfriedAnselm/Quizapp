@@ -41,6 +41,7 @@ function answer(selection) {
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
     document.getElementById('next-button').disabled = false;
+    disableAnswers();
 }
 
 function nextQuestion() {
@@ -48,6 +49,7 @@ function nextQuestion() {
     document.getElementById('next-button').disabled = true;
     resetAnswerButtons();
     showQuestion();
+    enableAnswers();
 }
 
 function resetAnswerButtons() {
@@ -59,4 +61,25 @@ function resetAnswerButtons() {
     document.getElementById('answer_2').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_3').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
+}
+
+function retry() {
+    currentQuestion = 0;
+    rightQuestions = 0;
+    document.getElementById('card').classList.remove('d-none');
+    document.getElementById('finish-card').classList.add('d-none');
+    render();
+}
+
+
+function disableAnswers() {
+    for (let i = 1; i < 5; i++) {
+      document.getElementById(`answer_${i}`).parentNode.style.pointerEvents = 'none';
+    }
+}
+
+function enableAnswers() {
+    for (let i = 1; i < 5; i++) {
+        document.getElementById(`answer_${i}`).parentNode.style.pointerEvents = 'auto';
+    }
 }
